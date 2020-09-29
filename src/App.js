@@ -3,25 +3,20 @@ import classnames from 'classnames';
 import _ from 'lodash';
 import { Progress } from 'antd';
 import { Button } from 'antd';
-
 import { HeartTwoTone } from '@ant-design/icons';
 import { allItems } from './items';
 import Timer from './Timer';
 import Item from './Item';
-
 import { TRIES, PRESET } from './consts';
 
 import './style.scss';
 
-    // toys: PRESET[level].toys,
-    // time: PRESET[level].time,
-    // itemSize: PRESET[level].itemSize,
-    // boardSize: PRESET[level].boardSize,
+const getPreset = (level) => PRESET[Math.max(Math.min(level - 1, PRESET.length - 1), 0)];
 
-const TOYS_COUNT = (level) => PRESET[Math.max(Math.min(level - 1, 4), 0)].toys;
-const TIME_SEC = (level) => PRESET[Math.max(Math.min(level - 1, 4), 0)].time;
-const ITEM_SIZE = (level) => PRESET[Math.max(Math.min(level - 1, 4), 0)].itemSize;
-const BOARD_SIZE = (level) => PRESET[Math.max(Math.min(level - 1, 4), 0)].boardSize;
+const TOYS_COUNT = (level) => getPreset(level).toys;
+const TIME_SEC = (level) => getPreset(level).time;
+const ITEM_SIZE = (level) => getPreset(level).itemSize;
+const BOARD_SIZE = (level) => getPreset(level).boardSize;
 
 const ShakedGame = () => {
     const [toys, setToys] = useState([]);
