@@ -1,0 +1,119 @@
+.shaked-game {
+    padding: 25px;
+    direction: rtl;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    .game-panel {
+        position: relative;
+        margin-bottom: 16px;
+
+        button {
+          margin: 20px auto 0;
+        }
+
+        .tries {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .score {
+            position: absolute;
+            top: 50px;
+            right: 150px;
+            left: 0;
+            width: calc(100% - 150px);
+        }
+
+        .game-score {
+            font-size: 26px;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+
+        aside {
+            border: 1px solid black;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+
+            h3 {
+              width: 100%;
+            }
+
+            .game-item {
+                margin: 10px auto;
+            }
+        }
+
+        .main-game {
+            background-color: ghostwhite;
+            border: 1px solid black;
+            position: relative;
+            user-select: none;
+        }
+
+        .game-item {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: white;
+            border: 1px solid grey;
+            z-index: 1;
+
+            &:hover {
+              z-index: 3;
+            }
+
+            &:not(.toy):active {
+                animation: shake .5s linear;
+            }
+        }
+
+        .hoorai {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            z-index: 4;
+            background: rgba(255, 255, 255, 0.9);
+        }
+    }
+}
+
+
+/* also need keyframes and -moz-keyframes */
+ @keyframes shake {
+    8%, 41% {
+        -webkit-transform: translateX(-10px);
+    }
+    25%, 58% {
+        -webkit-transform: translateX(10px);
+    }
+    75% {
+        -webkit-transform: translateX(-5px);
+    }
+    92% {
+        -webkit-transform: translateX(5px);
+    }
+    0%, 100% {
+        -webkit-transform: translateX(0);
+    }
+}
